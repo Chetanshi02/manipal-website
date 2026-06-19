@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Manipal Academy of Higher Education — Inspired by Life</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --indigo:#161430;
+    --indigo-soft:#262247;
+    --orange:#FF5A1F;
+    --orange-deep:#E8480F;
+    --amber:#FFB23E;
+    --coral:#FF7E5F;
+    --paper:#FFF9F4;
+    --peach:#FFEADF;
+    --white:#FFFFFF;
+    --muted:#6E6A85;
+    --line:rgba(22,20,48,.10);
+    --line-strong:rgba(22,20,48,.16);
+    --sunrise:linear-gradient(135deg,#FFB23E 0%,#FF5A1F 52%,#FF7E5F 100%);
+    --shadow-sm:0 2px 8px rgba(22,20,48,.06);
+    --shadow-md:0 14px 40px rgba(22,20,48,.10);
+    --shadow-lg:0 30px 80px rgba(22,20,48,.18);
+    --r-lg:26px;
+    --r-md:18px;
+    --r-sm:12px;
+    --maxw:1220px;
+    --font-display:"Fraunces",Georgia,serif;
+    --font-body:"Plus Jakarta Sans",system-ui,-apple-system,sans-serif;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    font-family:var(--font-body);
+    color:var(--indigo);
+    background:var(--paper);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  button{font-family:inherit;cursor:pointer;border:none;background:none}
+  ::selection{background:var(--orange);color:#fff}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  .section{padding:96px 0}
+  .eyebrow{
+    font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--orange-deep);display:inline-flex;align-items:center;gap:9px;
+  }
+  .eyebrow::before{content:"";width:22px;height:2px;background:var(--orange);border-radius:2px}
+  .eyebrow.center{justify-content:center}
+  h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.04;letter-spacing:-.01em}
+  .h-sec{font-size:clamp(2rem,3.6vw,2.9rem);margin:16px 0 0}
+  .lead{color:var(--muted);font-size:1.06rem;max-width:60ch}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;justify-content:center;
+    font-weight:700;font-size:.95rem;padding:14px 26px;border-radius:999px;
+    transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s,background .25s,color .25s;
+    white-space:nowrap;
+  }
+  .btn svg{width:16px;height:16px}
+  .btn-primary{background:var(--orange);color:#fff;box-shadow:0 10px 26px rgba(255,90,31,.34)}
+  .btn-primary:hover{background:var(--orange-deep);transform:translateY(-2px);box-shadow:0 16px 34px rgba(255,90,31,.42)}
+  .btn-ghost{background:rgba(22,20,48,.05);color:var(--indigo);border:1px solid var(--line-strong)}
+  .btn-ghost:hover{background:rgba(22,20,48,.09);transform:translateY(-2px)}
+  .btn-light{background:#fff;color:var(--indigo)}
+  .btn-light:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+  .link-arrow{font-weight:700;color:var(--orange-deep);display:inline-flex;align-items:center;gap:6px;font-size:.95rem}
+  .link-arrow svg{width:15px;height:15px;transition:transform .25s}
+  .link-arrow:hover svg{transform:translateX(4px)}
+
+  /* ---------- HEADER ---------- */
+  .topbar{background:var(--indigo);color:rgba(255,255,255,.78);font-size:.78rem;font-weight:500}
+  .topbar .wrap{display:flex;justify-content:space-between;align-items:center;height:38px;gap:18px}
+  .topbar nav{display:flex;gap:20px;flex-wrap:wrap}
+  .topbar a{transition:color .2s;display:inline-flex;align-items:center;gap:6px}
+  .topbar a:hover{color:#fff}
+  .topbar .tb-left{display:flex;align-items:center;gap:8px;color:var(--amber);font-weight:600}
+
+  header.site{position:sticky;top:0;z-index:60;background:rgba(255,249,244,.86);backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:box-shadow .3s,border-color .3s,background .3s}
+  header.site.scrolled{box-shadow:var(--shadow-sm);border-color:var(--line);background:rgba(255,249,244,.94)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand .mark{width:40px;height:40px;border-radius:11px;background:var(--sunrise);display:grid;place-items:center;box-shadow:0 6px 16px rgba(255,90,31,.3)}
+  .brand .mark svg{width:21px;height:21px}
+  .brand .wordmark{line-height:1}
+  .brand .wordmark b{font-family:var(--font-body);font-weight:800;font-size:1.18rem;letter-spacing:.02em;display:block}
+  .brand .wordmark span{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .nav-links{display:flex;align-items:center;gap:4px}
+  .nav-links>a{font-weight:600;font-size:.92rem;padding:9px 14px;border-radius:10px;color:#2b2950;transition:background .2s,color .2s;position:relative}
+  .nav-links>a:hover{background:var(--peach);color:var(--orange-deep)}
+  .nav-cta{display:flex;align-items:center;gap:10px}
+  .nav-cta .btn{padding:11px 20px}
+  .icon-btn{width:42px;height:42px;border-radius:11px;display:none;place-items:center;background:rgba(22,20,48,.05);border:1px solid var(--line)}
+  .icon-btn svg{width:20px;height:20px}
+
+  /* mobile menu */
+  .mmenu{position:fixed;inset:0;z-index:80;background:var(--paper);transform:translateX(100%);transition:transform .4s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;padding:24px 28px 40px;overflow-y:auto}
+  .mmenu.open{transform:translateX(0)}
+  .mmenu-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
+  .mmenu a{font-family:var(--font-display);font-size:1.5rem;font-weight:500;padding:14px 0;border-bottom:1px solid var(--line)}
+  .mmenu .btn{margin-top:22px}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;padding:60px 0 84px;overflow:hidden}
+  .hero::before{content:"";position:absolute;top:-260px;right:-200px;width:720px;height:720px;border-radius:50%;
+    background:radial-gradient(circle at center,rgba(255,178,62,.5),rgba(255,90,31,.18) 45%,transparent 68%);filter:blur(8px);z-index:0}
+  .hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
+  .hero-copy h1{font-size:clamp(2.6rem,5.2vw,4.3rem);margin:18px 0 0}
+  .hero-copy h1 .accent{font-style:italic;background:var(--sunrise);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+  .hero-copy .lead{margin:20px 0 0;font-size:1.1rem;max-width:46ch}
+  .hero-actions{display:flex;align-items:center;gap:14px;margin-top:30px;flex-wrap:wrap}
+  .hero-chips{display:flex;gap:10px;margin-top:30px;flex-wrap:wrap}
+  .chip{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 15px;font-size:.8rem;font-weight:600;box-shadow:var(--shadow-sm)}
+  .chip .dot{width:7px;height:7px;border-radius:50%;background:var(--orange)}
+
+
+  .hero-visual{position:relative}
+  .hero-photo{aspect-ratio:4/4.4;border-radius:var(--r-lg);position:relative;overflow:hidden;box-shadow:var(--shadow-lg)}
+  .ph{position:relative;overflow:hidden}
+  .ph[data-label]:not([data-label=""])::after{content:attr(data-label);position:absolute;left:14px;bottom:12px;font-size:.68rem;font-weight:600;letter-spacing:.04em;color:rgba(255,255,255,.85);background:rgba(22,20,48,.34);backdrop-filter:blur(4px);padding:4px 10px;border-radius:999px}
+  .ph-grain{position:absolute;inset:0;opacity:.5;mix-blend-mode:overlay;
+    background-image:radial-gradient(rgba(255,255,255,.7) .5px,transparent .5px);background-size:4px 4px}
+  .ph1{background:linear-gradient(150deg,#2b1a4d 0%,#FF5A1F 130%)}
+  .ph2{background:linear-gradient(150deg,#FF7E5F,#FFB23E)}
+  .ph3{background:linear-gradient(150deg,#1f1a3d,#5a3aa0)}
+  .ph4{background:linear-gradient(150deg,#FF5A1F,#FF9A3E)}
+  .ph5{background:linear-gradient(150deg,#13243d,#2b7a78)}
+  .ph6{background:linear-gradient(150deg,#3a1d4d,#FF7E5F)}
+  .ph svg.ico{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;opacity:.22;color:#fff}
+
+  .float-card{position:absolute;background:#fff;border-radius:var(--r-md);padding:16px 18px;box-shadow:var(--shadow-md);display:flex;align-items:center;gap:13px}
+  .float-card .fc-ico{width:42px;height:42px;border-radius:12px;background:var(--peach);display:grid;place-items:center;color:var(--orange-deep)}
+  .float-card .fc-ico svg{width:21px;height:21px}
+  .float-card b{font-family:var(--font-display);font-size:1.5rem;display:block;line-height:1}
+  .float-card span{font-size:.74rem;color:var(--muted);font-weight:600}
+  .fc-rank{top:24px;left:-30px}
+  .fc-global{bottom:30px;right:-26px}
+
+  /* ---------- TRUST / RANKINGS ---------- */
+  .trust{background:var(--indigo);color:#fff;padding:30px 0}
+  .trust .wrap{display:flex;align-items:center;justify-content:center;gap:14px 40px;flex-wrap:wrap}
+  .trust .tlabel{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.55);font-weight:700}
+  .badge{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:.9rem;color:rgba(255,255,255,.92)}
+  .badge i{width:30px;height:30px;border-radius:8px;background:rgba(255,255,255,.08);display:grid;place-items:center;color:var(--amber);font-style:normal}
+  .badge i svg{width:16px;height:16px}
+
+  /* ---------- STATS ---------- */
+  .stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .stat{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:30px 26px;position:relative;overflow:hidden}
+  .stat::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--sunrise)}
+  .stat .num{font-family:var(--font-display);font-size:3rem;font-weight:600;line-height:1;letter-spacing:-.02em}
+  .stat .num .suf{color:var(--orange);font-size:2rem}
+  .stat .lbl{margin-top:8px;font-weight:600;color:#3a3760}
+  .stat .sub{font-size:.82rem;color:var(--muted);margin-top:3px}
+
+  /* ---------- PROGRAM EXPLORER ---------- */
+  .explore{background:linear-gradient(180deg,var(--paper),#fff)}
+  .explore-head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap}
+
+  /* program finder (search) */
+  .finder{margin:32px 0 22px;max-width:760px}
+  .finder-search{position:relative;display:flex;align-items:center;gap:10px;background:#fff;border:1.5px solid var(--line-strong);border-radius:16px;padding:8px 8px 8px 18px;box-shadow:var(--shadow-sm);transition:border-color .2s,box-shadow .2s}
+  .finder-search:focus-within{border-color:var(--orange);box-shadow:0 0 0 4px rgba(255,90,31,.12)}
+  .finder-search>svg{width:22px;height:22px;color:var(--orange-deep);flex:none}
+  .finder-search input{flex:1;border:none;outline:none;background:none;font-family:inherit;font-size:1.05rem;font-weight:500;color:var(--indigo);min-width:0;padding:8px 0}
+  .finder-search input::placeholder{color:#9c98b0;font-weight:500}
+  .finder-search .finder-btn{background:var(--orange);color:#fff;border-radius:11px;padding:12px 22px;font-weight:700;font-size:.92rem;white-space:nowrap;transition:background .2s}
+  .finder-search .finder-btn:hover{background:var(--orange-deep)}
+  .suggest{position:absolute;top:calc(100% + 8px);left:0;right:0;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-lg);overflow:hidden;z-index:30;display:none}
+  .suggest.open{display:block}
+  .suggest button{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:11px 16px;background:none;transition:background .15s}
+  .suggest button:hover{background:var(--peach)}
+  .suggest .sg-ico{width:34px;height:34px;border-radius:9px;background:var(--peach);display:grid;place-items:center;color:var(--orange-deep);flex:none}
+  .suggest .sg-ico svg{width:17px;height:17px}
+  .suggest .sg-label{font-weight:600;font-size:.95rem;color:var(--indigo)}
+  .suggest .sg-type{margin-left:auto;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);background:rgba(22,20,48,.05);padding:3px 9px;border-radius:999px}
+  .finder-trending{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .finder-trending .tr-label{font-size:.82rem;font-weight:700;color:#3a3760;display:inline-flex;align-items:center;gap:6px}
+  .finder-trending .tr-label svg{width:15px;height:15px;color:var(--orange)}
+  .finder-trending button{background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:.82rem;font-weight:600;color:#3a3760;transition:all .2s}
+  .finder-trending button:hover{border-color:var(--orange);color:var(--orange-deep);transform:translateY(-1px)}
+
+  /* discovery modes */
+  .modes{display:inline-flex;gap:4px;background:rgba(22,20,48,.05);border-radius:12px;padding:5px;margin-bottom:18px}
+  .mode{padding:9px 18px;border-radius:9px;font-weight:600;font-size:.88rem;color:#34315a;transition:all .2s}
+  .mode.active{background:#fff;color:var(--orange-deep);box-shadow:var(--shadow-sm)}
+
+  .filters{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 30px}
+  .filter{padding:10px 18px;border-radius:999px;background:#fff;border:1px solid var(--line-strong);font-weight:600;font-size:.88rem;color:#34315a;transition:all .22s;display:inline-flex;align-items:center;gap:8px}
+  .filter:hover{border-color:var(--orange);color:var(--orange-deep)}
+  .filter.active{background:var(--indigo);color:#fff;border-color:var(--indigo)}
+
+  .prog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .pcard{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s,border-color .3s}
+  .pcard:hover{transform:translateY(-5px);box-shadow:var(--shadow-md);border-color:transparent}
+  .pcard .pc-top{height:130px;position:relative}
+  .pcard .pc-tag{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.92);color:var(--indigo);font-size:.68rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;padding:5px 11px;border-radius:999px}
+  .pcard .pc-body{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1}
+  .pcard h3{font-size:1.18rem}
+  .pcard p{color:var(--muted);font-size:.9rem;margin-top:8px;flex:1}
+  .pcard .pc-foot{display:flex;align-items:center;justify-content:space-between;margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
+  .pcard .levels{font-size:.78rem;font-weight:600;color:#3a3760}
+  .pcard.hide{display:none}
+  .no-results{padding:38px;text-align:center;color:var(--muted);font-weight:500;background:#fff;border:1px dashed var(--line-strong);border-radius:var(--r-md)}
+
+  /* ---------- WHY MANIPAL ---------- */
+  .why{background:var(--indigo);color:#fff;position:relative;overflow:hidden}
+  .why::before{content:"";position:absolute;bottom:-300px;left:-200px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(255,90,31,.28),transparent 65%)}
+  .why .wrap{position:relative;z-index:1}
+  .why .eyebrow{color:var(--amber)}
+  .why .eyebrow::before{background:var(--amber)}
+  .why .h-sec{color:#fff;max-width:18ch}
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:46px}
+  .wcard{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:var(--r-md);padding:28px 26px;transition:background .25s,transform .25s}
+  .wcard:hover{background:rgba(255,255,255,.08);transform:translateY(-4px)}
+  .wcard .wi{width:50px;height:50px;border-radius:14px;background:var(--sunrise);display:grid;place-items:center;margin-bottom:18px}
+  .wcard .wi svg{width:24px;height:24px;color:#fff}
+  .wcard h3{font-size:1.3rem;color:#fff}
+  .wcard p{color:rgba(255,255,255,.66);font-size:.92rem;margin-top:9px}
+  .wcard.feature{grid-column:span 2;background:var(--sunrise);border:none;display:flex;align-items:center;gap:28px}
+  .wcard.feature .wf-txt{flex:1}
+  .wcard.feature .wi{background:rgba(255,255,255,.18)}
+  .wcard.feature h3{font-size:1.7rem}
+  .wcard.feature p{color:rgba(255,255,255,.9)}
+  .wcard.feature .wf-visual{width:160px;height:120px;border-radius:var(--r-sm);flex:none}
+
+  /* ---------- OUTCOMES ---------- */
+  .outcomes{background:var(--peach)}
+  .out-grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
+  .out-stats{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:30px}
+  .ostat{background:#fff;border-radius:var(--r-md);padding:22px 24px;box-shadow:var(--shadow-sm)}
+  .ostat b{font-family:var(--font-display);font-size:2.3rem;display:block;line-height:1;color:var(--orange-deep)}
+  .ostat span{font-size:.86rem;color:#3a3760;font-weight:600}
+  .recruiters{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+  .rtag{background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 15px;font-weight:700;font-size:.85rem;color:#3a3760}
+  .out-visual{position:relative;aspect-ratio:1/1;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-md)}
+  .quote-card{position:absolute;left:20px;right:20px;bottom:20px;background:rgba(255,255,255,.95);backdrop-filter:blur(6px);border-radius:var(--r-md);padding:20px 22px;box-shadow:var(--shadow-md)}
+  .quote-card p{font-family:var(--font-display);font-size:1.02rem;font-style:italic;line-height:1.35}
+  .quote-card .qa{display:flex;align-items:center;gap:11px;margin-top:13px}
+  .quote-card .qa .av{width:38px;height:38px;border-radius:50%;background:var(--sunrise);flex:none}
+  .quote-card .qa b{font-size:.86rem}
+  .quote-card .qa span{font-size:.76rem;color:var(--muted);display:block}
+
+  /* ---------- CAMPUS LIFE GALLERY ---------- */
+  .life-head{max-width:60ch}
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:16px;margin-top:42px}
+  .gtile{border-radius:var(--r-md);overflow:hidden;position:relative}
+  .gtile .gcap{position:absolute;left:16px;bottom:14px;z-index:2;color:#fff}
+  .gtile .gcap b{font-family:var(--font-display);font-size:1.15rem;display:block;line-height:1.1}
+  .gtile .gcap span{font-size:.78rem;opacity:.85}
+  .gtile::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(15,12,30,.72));z-index:1}
+  .g-wide{grid-column:span 2}
+  .g-tall{grid-row:span 2}
+
+  /* virtual tour cta */
+  .tour-cta{display:flex;align-items:center;gap:18px;background:var(--indigo);color:#fff;border-radius:var(--r-lg);padding:24px 28px;margin-top:34px;flex-wrap:wrap}
+  .tour-cta .play{width:54px;height:54px;border-radius:50%;background:var(--sunrise);display:grid;place-items:center;flex:none}
+  .tour-cta .play svg{width:22px;height:22px;color:#fff}
+  .tour-cta .tc-txt{flex:1;min-width:220px}
+  .tour-cta .tc-txt b{font-family:var(--font-display);font-size:1.25rem;display:block;font-weight:600}
+  .tour-cta .tc-txt span{font-size:.9rem;color:rgba(255,255,255,.7)}
+  .tour-cta .btn{flex:none}
+
+  /* ---------- ADMISSIONS BAND ---------- */
+  .admit{padding:0;margin:96px 0}
+  .admit-inner{background:var(--sunrise);border-radius:var(--r-lg);padding:60px 56px;color:#fff;position:relative;overflow:hidden;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+  .admit-inner::before{content:"";position:absolute;right:-120px;top:-120px;width:380px;height:380px;border-radius:50%;background:rgba(255,255,255,.14)}
+  .admit-inner h2{color:#fff;font-size:clamp(1.9rem,3.2vw,2.7rem);position:relative}
+  .admit-inner p{color:rgba(255,255,255,.92);margin-top:14px;max-width:42ch;position:relative}
+  .admit-actions{display:flex;gap:13px;margin-top:28px;flex-wrap:wrap;position:relative}
+  .steps{position:relative;display:grid;gap:14px}
+  .stepi{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.22);border-radius:var(--r-md);padding:16px 20px;display:flex;align-items:center;gap:16px}
+  .stepi .sn{font-family:var(--font-display);font-size:1.5rem;font-weight:600;width:40px;flex:none}
+  .stepi b{display:block;font-size:.98rem}
+  .stepi span{font-size:.82rem;color:rgba(255,255,255,.82)}
+
+  /* ---------- NEWS ---------- */
+  .news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:42px}
+  .ncard{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;transition:transform .3s,box-shadow .3s}
+  .ncard:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+  .ncard .nc-img{height:170px;position:relative}
+  .ncard .nc-cat{position:absolute;top:12px;left:12px;background:var(--orange);color:#fff;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:5px 11px;border-radius:999px}
+  .ncard .nc-body{padding:20px 22px 22px}
+  .ncard .nc-date{font-size:.78rem;color:var(--muted);font-weight:600}
+  .ncard h3{font-size:1.12rem;margin-top:7px;line-height:1.25}
+  .ncard:hover h3{color:var(--orange-deep)}
+
+  /* ---------- AUDIENCE QUICK ACCESS ---------- */
+  .aud{background:var(--indigo);color:#fff}
+  .aud-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:42px}
+  .acard{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:var(--r-md);padding:26px 24px;transition:background .25s,transform .25s}
+  .acard:hover{background:rgba(255,255,255,.09);transform:translateY(-4px)}
+  .acard .ai{width:46px;height:46px;border-radius:12px;background:rgba(255,255,255,.08);display:grid;place-items:center;color:var(--amber);margin-bottom:16px}
+  .acard .ai svg{width:22px;height:22px}
+  .acard h3{font-size:1.15rem;color:#fff}
+  .acard ul{list-style:none;margin-top:13px;display:grid;gap:9px}
+  .acard ul a{font-size:.88rem;color:rgba(255,255,255,.68);display:flex;align-items:center;gap:8px;transition:color .2s}
+  .acard ul a:hover{color:var(--amber)}
+  .acard ul a svg{width:13px;height:13px;flex:none}
+
+  /* ---------- FOOTER ---------- */
+  footer.site{background:#100e22;color:rgba(255,255,255,.62);padding:64px 0 30px}
+  .foot-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.1)}
+  .foot-brand .brand .wordmark b{color:#fff}
+  .foot-brand p{margin-top:18px;font-size:.9rem;max-width:34ch}
+  .foot-social{display:flex;gap:11px;margin-top:20px}
+  .foot-social a{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.07);display:grid;place-items:center;color:#fff;transition:background .2s}
+  .foot-social a:hover{background:var(--orange)}
+  .foot-social a svg{width:17px;height:17px}
+  .fcol h4{color:#fff;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-bottom:16px;font-family:var(--font-body)}
+  .fcol a{display:block;font-size:.9rem;padding:6px 0;transition:color .2s}
+  .fcol a:hover{color:var(--amber)}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;font-size:.82rem;gap:16px;flex-wrap:wrap}
+  .foot-bottom .fb-links{display:flex;gap:20px;flex-wrap:wrap}
+
+  /* ---------- REVEAL ANIM ---------- */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+  .reveal.visible{opacity:1;transform:none}
+  .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}
+
+  /* ---------- HERO CASCADE FINDER ---------- */
+  .hfinder{margin-top:26px;max-width:640px}
+  .hbar{display:flex;align-items:stretch;background:#fff;border:1.5px solid var(--line-strong);border-radius:16px;box-shadow:var(--shadow-md);position:relative}
+  .hseg{flex:1;min-width:0;position:relative}
+  .hseg-btn{width:100%;text-align:left;padding:11px 16px;background:none;border-radius:16px}
+  .hseg-btn .hl{font-size:11px;color:var(--muted);font-weight:600;display:block;margin-bottom:3px}
+  .hseg-btn .hv{display:flex;align-items:center;gap:7px}
+  .hseg-btn .hv .hicon{color:var(--orange-deep);width:18px;height:18px;flex:none}
+  .hseg-btn .hv .hval{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;font-size:.95rem;font-weight:600;color:var(--indigo)}
+  .hseg-btn .hv .hchev{margin-left:auto;color:var(--muted);width:16px;height:16px;flex:none;transition:transform .2s}
+  .hseg.open .hseg-btn .hchev{transform:rotate(180deg)}
+  .hseg[aria-disabled="true"] .hseg-btn{cursor:not-allowed}
+  .hseg[aria-disabled="true"] .hv .hval,.hseg[aria-disabled="true"] .hv .hicon{color:#b6b3c6}
+  .hdiv{width:1px;background:var(--line);align-self:center;height:42px;flex:none}
+  .hfind{margin:7px;padding:0 22px;background:var(--indigo);color:#fff;border-radius:12px;font-weight:700;font-size:.9rem;display:flex;align-items:center;gap:8px;white-space:nowrap;transition:background .2s,opacity .2s}
+  .hfind:hover:not(:disabled){background:var(--indigo-soft)}
+  .hfind:disabled{opacity:.4;cursor:not-allowed}
+  .hfind svg{width:16px;height:16px}
+  .hpanel{position:absolute;top:calc(100% + 8px);left:8px;min-width:240px;max-width:320px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-lg);padding:6px;z-index:40;display:none;max-height:300px;overflow-y:auto}
+  .hseg.open .hpanel{display:block}
+  .hp-head{font-size:11px;color:var(--muted);padding:7px 10px 5px;font-weight:600}
+  .hopt{display:flex;align-items:center;gap:9px;width:100%;text-align:left;padding:10px 11px;border-radius:10px;font-size:.92rem;font-weight:500;color:var(--indigo);transition:background .15s}
+  .hopt:hover{background:var(--peach)}
+  .hopt.sel{background:var(--peach)}
+  .hopt .ho-ic{color:var(--orange-deep);width:17px;height:17px;flex:none}
+  .hopt .ho-ck{margin-left:auto;color:var(--orange-deep);width:16px;height:16px;flex:none}
+  .hfinder-m{display:none;margin-top:26px;max-width:520px}
+  .hm-trigger{display:flex;align-items:center;gap:12px;width:100%;background:#fff;border:1.5px solid var(--line-strong);border-radius:14px;box-shadow:var(--shadow-md);padding:15px 16px;text-align:left}
+  .hm-trigger .hm-ic{color:var(--orange-deep);width:20px;height:20px;flex:none}
+  .hm-trigger .hm-t{font-size:1rem;font-weight:600;color:var(--indigo);display:block}
+  .hm-trigger .hm-s{font-size:.78rem;color:var(--muted);display:block;margin-top:1px}
+  .hm-trigger .hm-chev{margin-left:auto;color:var(--muted);width:18px;height:18px;flex:none}
+
+  /* ---------- MOBILE STEPPED SHEET ---------- */
+  .sheet-scrim{position:fixed;inset:0;background:rgba(15,12,30,.5);z-index:200;opacity:0;pointer-events:none;transition:opacity .3s}
+  .sheet-scrim.open{opacity:1;pointer-events:auto}
+  .sheet{position:fixed;left:0;right:0;bottom:0;z-index:201;background:var(--paper);border-radius:22px 22px 0 0;transform:translateY(101%);transition:transform .35s cubic-bezier(.4,0,.2,1);max-height:90vh;display:flex;flex-direction:column;padding:14px 20px 22px}
+  .sheet.open{transform:translateY(0)}
+  .sheet-grab{width:38px;height:4px;border-radius:999px;background:var(--line-strong);margin:0 auto 14px;flex:none}
+  .sheet-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex:none}
+  .sheet-top b{font-family:var(--font-display);font-size:1.3rem;font-weight:600}
+  .sheet-close{width:36px;height:36px;border-radius:10px;background:rgba(22,20,48,.05);display:grid;place-items:center}
+  .sheet-close svg{width:18px;height:18px}
+  .sheet-prog{display:flex;align-items:center;gap:7px;margin-bottom:18px;flex:none}
+  .pdot{height:5px;border-radius:999px;background:var(--line-strong);flex:1;transition:background .3s}
+  .pdot.on{background:var(--orange)}
+  .pstep{font-size:.78rem;color:var(--muted);font-weight:600;margin-left:6px;white-space:nowrap}
+  .sheet-q{font-family:var(--font-display);font-size:1.4rem;font-weight:600;margin-bottom:16px;flex:none}
+  .sheet-list{overflow-y:auto;flex:1;margin:0 -4px;padding:0 4px}
+  .srow{display:flex;align-items:center;gap:13px;width:100%;text-align:left;background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px 16px;margin-bottom:10px;transition:border-color .2s,transform .1s}
+  .srow:active{transform:scale(.99)}
+  .srow.sel{border-color:var(--orange);background:var(--peach)}
+  .srow .sr-ic{width:40px;height:40px;border-radius:11px;background:var(--peach);display:grid;place-items:center;color:var(--orange-deep);flex:none}
+  .srow .sr-ic svg{width:19px;height:19px}
+  .srow .sr-tx{flex:1;font-weight:600;font-size:1rem;color:var(--indigo);min-width:0}
+  .srow .sr-tx small{display:block;font-weight:500;font-size:.78rem;color:var(--muted);margin-top:2px}
+  .srow .sr-go{color:var(--muted);width:18px;height:18px;flex:none}
+  .sheet-foot{display:flex;gap:11px;margin-top:14px;padding-top:14px;border-top:1px solid var(--line);flex:none}
+  .sheet-back{padding:13px 18px;border-radius:12px;background:rgba(22,20,48,.05);font-weight:700;font-size:.9rem;color:var(--indigo);display:flex;align-items:center;gap:7px}
+  .sheet-back svg{width:15px;height:15px}
+  .sheet-cta{flex:1;padding:13px;border-radius:12px;background:var(--orange);color:#fff;font-weight:700;font-size:.95rem;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .2s,opacity .2s}
+  .sheet-cta:disabled{opacity:.4;cursor:not-allowed}
+  .sheet-cta:hover:not(:disabled){background:var(--orange-deep)}
+
+  /* ---------- FIND SUMMARY CHIP ---------- */
+  .find-summary{display:none;align-items:center;gap:13px;background:#fff;border:1px solid var(--line-strong);border-radius:14px;padding:13px 16px;margin:0 0 26px;box-shadow:var(--shadow-sm)}
+  .find-summary.show{display:flex}
+  .find-summary .fs-ic{width:40px;height:40px;border-radius:11px;background:var(--peach);display:grid;place-items:center;color:var(--orange-deep);flex:none}
+  .find-summary .fs-ic svg{width:19px;height:19px}
+  .find-summary .fs-tx{flex:1;font-size:.92rem;color:#3a3760;min-width:0}
+  .find-summary .fs-tx b{color:var(--indigo)}
+  .find-summary .fs-path{display:flex;flex-wrap:wrap;gap:6px;margin-top:5px}
+  .find-summary .fs-path span{font-size:.76rem;font-weight:700;color:var(--orange-deep);background:var(--peach);padding:3px 11px;border-radius:999px}
+  .find-summary .fs-clear{color:var(--muted);background:rgba(22,20,48,.05);border-radius:9px;padding:9px 14px;font-weight:700;font-size:.82rem;flex:none}
+  .find-summary .fs-clear:hover{background:rgba(22,20,48,.09)}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:1080px){
+    .why-grid,.aud-grid,.gallery{grid-template-columns:repeat(2,1fr)}
+    .wcard.feature{grid-column:span 2}
+    .gallery{grid-auto-rows:180px}
+  }
+  @media (max-width:920px){
+    .section{padding:72px 0}
+    .admit{margin:72px 0}
+    .nav-links{display:none}
+    .icon-btn{display:grid}
+    .hero .wrap{grid-template-columns:1fr;gap:48px}
+    .hero-visual{max-width:440px;margin:0 auto}
+    .stats .wrap{grid-template-columns:repeat(2,1fr)}
+    .prog-grid,.news-grid{grid-template-columns:repeat(2,1fr)}
+    .out-grid{grid-template-columns:1fr;gap:36px}
+    .admit-inner{grid-template-columns:1fr;padding:44px 32px}
+    .foot-top{grid-template-columns:1fr 1fr}
+    .topbar nav{display:none}
+    .hfinder{display:none}
+    .hfinder-m{display:block}
+  }
+  @media (max-width:560px){
+    .wrap{padding:0 18px}
+    .section{padding:58px 0}
+    .admit{margin:58px 0}
+    .stats .wrap,.prog-grid,.news-grid,.why-grid,.aud-grid,.out-stats{grid-template-columns:1fr}
+    .gallery{grid-template-columns:1fr 1fr;grid-auto-rows:150px}
+    .g-wide{grid-column:span 2}
+    .wcard.feature{grid-column:span 2;flex-direction:column;align-items:flex-start;text-align:left}
+    .wcard.feature .wf-visual{width:100%}
+    .hero-actions .btn{flex:1}
+    .fc-rank{left:-8px}.fc-global{right:-8px}
+    .float-card b{font-size:1.25rem}
+    .admit-inner{padding:34px 22px}
+    .foot-top{grid-template-columns:1fr}
+    .trust .tlabel{width:100%;text-align:center}
+    .finder-search{flex-wrap:wrap;border-radius:18px}
+    .finder-search input{order:2;width:100%}
+    .finder-search .finder-btn{order:3;width:100%}
+    .modes{display:flex;width:100%}
+    .mode{flex:1;text-align:center;padding:10px 6px}
+    .tour-cta{flex-direction:column;align-items:flex-start}
+    .tour-cta .btn{width:100%}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ TOP UTILITY BAR ============ -->
+<div class="topbar">
+  <div class="wrap">
+    <a href="#" class="tb-left">★ Ranked #14 in India · NIRF 2024</a>
+    <nav>
+      <a href="#">Online Manipal</a>
+      <a href="#">International</a>
+      <a href="#">Alumni</a>
+      <a href="#">Libraries</a>
+      <a href="#">Careers</a>
+    </nav>
+  </div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="site" id="header">
+  <div class="wrap">
+    <div class="nav">
+      <a href="#" class="brand" aria-label="Manipal home">
+        <span class="mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C12 2 7 7 7 13a5 5 0 0 0 10 0c0-2-1-3.5-2.5-5C13 11 14 13 12 14c-1.5-1-1-3 0-5 0 0 0-4 0-7Z" fill="#fff"/><circle cx="12" cy="19" r="1.6" fill="#fff"/></svg>
+        </span>
+        <span class="wordmark"><b>MANIPAL</b><span>Academy of Higher Education</span></span>
+      </a>
+      <nav class="nav-links">
+        <a href="#why">Why Manipal</a>
+        <a href="#explore">Programs</a>
+        <a href="#outcomes">Outcomes</a>
+        <a href="#life">Campus Life</a>
+        <a href="#admissions">Admissions</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="#admissions" class="btn btn-primary">Apply for 2026</a>
+        <button class="icon-btn" id="menuOpen" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile menu -->
+<div class="mmenu" id="mmenu">
+  <div class="mmenu-top">
+    <span class="brand"><span class="mark"><svg viewBox="0 0 24 24"><path d="M12 2C12 2 7 7 7 13a5 5 0 0 0 10 0c0-2-1-3.5-2.5-5C13 11 14 13 12 14c-1.5-1-1-3 0-5 0 0 0-4 0-7Z" fill="#fff"/></svg></span><span class="wordmark"><b>MANIPAL</b></span></span>
+    <button class="icon-btn" id="menuClose" style="display:grid" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <a href="#why">Why Manipal</a>
+  <a href="#explore">Programs</a>
+  <a href="#outcomes">Outcomes</a>
+  <a href="#life">Campus Life</a>
+  <a href="#admissions">Admissions</a>
+  <a href="#admissions" class="btn btn-primary">Apply for 2026</a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="eyebrow reveal">Admissions open · 2026 intake</span>
+      <h1 class="reveal d1"><span class="accent">Inspired by Life.</span><br>Designed for your future.</h1>
+      <p class="lead reveal d2">For over 70 years, Manipal has turned ambition into achievement — growing from one founder's dream into India's largest university town, where 28,000+ students from 65 nations find the path that becomes their future.</p>
+      <div class="hfinder reveal d3">
+        <div class="hbar">
+          <div class="hseg" id="segLoc">
+            <button class="hseg-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+              <span class="hl">Campus location</span>
+              <span class="hv"><svg class="hicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg><span class="hval">Select campus</span><svg class="hchev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></span>
+            </button>
+            <div class="hpanel" id="panelLoc" role="listbox" aria-label="Campus location"><div class="hp-head">Choose a campus</div></div>
+          </div>
+          <div class="hdiv"></div>
+          <div class="hseg" id="segInst" aria-disabled="true">
+            <button class="hseg-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+              <span class="hl">Institution</span>
+              <span class="hv"><svg class="hicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v16M15 21V9h3a1 1 0 0 1 1 1v11M8 8h2M8 12h2M8 16h2"/></svg><span class="hval">Select a campus first</span><svg class="hchev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></span>
+            </button>
+            <div class="hpanel" id="panelInst" role="listbox" aria-label="Institution"></div>
+          </div>
+          <div class="hdiv"></div>
+          <div class="hseg" id="segProg" aria-disabled="true">
+            <button class="hseg-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+              <span class="hl">Program</span>
+              <span class="hv"><svg class="hicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5v-5"/></svg><span class="hval">Select an institution</span><svg class="hchev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></span>
+            </button>
+            <div class="hpanel" id="panelProg" role="listbox" aria-label="Program"></div>
+          </div>
+          <button class="hfind" id="hFind" type="button" disabled>Find
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="hfinder-m reveal d3">
+        <button class="hm-trigger" id="mTrigger" type="button" aria-haspopup="dialog">
+          <svg class="hm-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3" stroke-linecap="round"/></svg>
+          <span><span class="hm-t">Find your program</span><span class="hm-s">Campus &rarr; institution &rarr; program</span></span>
+          <svg class="hm-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+      </div>
+      <div class="hero-actions reveal d4">
+        <a href="#admissions" class="btn btn-primary">Start your application
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#explore" class="btn btn-ghost">Explore all programs</a>
+      </div>
+    </div>
+    <div class="hero-visual reveal d2">
+      <div class="hero-photo ph ph1" data-label="Campus aerial — swap for MAHE photo">
+        <div class="ph-grain"></div>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6"/></svg>
+      </div>
+      <div class="float-card fc-rank">
+        <span class="fc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4ZM7 6H4v1a3 3 0 0 0 3 3M17 6h3v1a3 3 0 0 1-3 3"/></svg></span>
+        <div><b>#14</b><span>NIRF India ranking</span></div>
+      </div>
+      <div class="float-card fc-global">
+        <span class="fc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18"/></svg></span>
+        <div><b>65+</b><span>nations on campus</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST / RANKINGS ============ -->
+<div class="trust">
+  <div class="wrap">
+    <span class="tlabel">Recognised for excellence</span>
+    <span class="badge"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 15.3 7.2 17.7l.9-5.4L4.2 8.5l5.4-.8L12 2Z"/></svg></i>Institution of Eminence</span>
+    <span class="badge"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></i>NAAC A++ Grade</span>
+    <span class="badge"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M8 13l-2 8 6-3 6 3-2-8"/></svg></i>NIRF #14 Overall</span>
+    <span class="badge"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/></svg></i>QS World Rankings</span>
+  </div>
+</div>
+
+<!-- ============ STATS ============ -->
+<section class="section stats">
+  <div class="wrap">
+    <div class="stat reveal"><div class="num"><span data-count="70">0</span><span class="suf">+</span></div><div class="lbl">Years of legacy</div><div class="sub">Since 1953, one dream at a time</div></div>
+    <div class="stat reveal d1"><div class="num"><span data-count="28">0</span><span class="suf">K+</span></div><div class="lbl">Students</div><div class="sub">Living and learning together</div></div>
+    <div class="stat reveal d2"><div class="num"><span data-count="300">0</span><span class="suf">+</span></div><div class="lbl">Programs</div><div class="sub">Across 30+ disciplines</div></div>
+    <div class="stat reveal d3"><div class="num"><span data-count="250">0</span><span class="suf">+</span></div><div class="lbl">Global partners</div><div class="sub">Universities across the world</div></div>
+  </div>
+</section>
+
+<!-- ============ WHY MANIPAL ============ -->
+<section class="section why" id="why">
+  <div class="wrap">
+    <span class="eyebrow reveal">The Manipal difference</span>
+    <h2 class="h-sec reveal d1">More than a campus.<br>An entire university town.</h2>
+    <div class="why-grid">
+      <div class="wcard feature reveal">
+        <div>
+          <div class="wi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V8l7-4 7 4v13M9 21v-5h6v5M9 12h.01M15 12h.01"/></svg></div>
+          <div class="wf-txt">
+            <h3>A 600-acre town built for students</h3>
+            <p>Hostels, hospitals, cafés, sports arenas and innovation hubs — everything you need to live, learn and grow, all within walking distance on one safe, self-contained campus.</p>
+          </div>
+        </div>
+        <div class="wf-visual ph ph2" data-label=""></div>
+      </div>
+      <div class="wcard reveal d1">
+        <div class="wi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5A2.5 2.5 0 0 0 6.5 22H20V2H6.5A2.5 2.5 0 0 0 4 4.5v15Z"/></svg></div>
+        <h3>Asia's largest health library</h3>
+        <p>14 libraries, world-class anatomy museum and round-the-clock research access.</p>
+      </div>
+      <div class="wcard reveal">
+        <div class="wi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v6m0 0 3-3m-3 3L9 5M5 12a7 7 0 0 1 14 0c0 3-2 4-2 6H7c0-2-2-3-2-6ZM9 22h6"/></svg></div>
+        <h3>Innovation Centre &amp; incubator</h3>
+        <p>Turn ideas into ventures with funding, mentors and a thriving startup community.</p>
+      </div>
+      <div class="wcard reveal d1">
+        <div class="wi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V6l-8-4Z"/></svg></div>
+        <h3>MARENA sports arena</h3>
+        <p>An Olympic-grade indoor complex where balance and wellbeing matter as much as grades.</p>
+      </div>
+      <div class="wcard reveal d2">
+        <div class="wi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18"/></svg></div>
+        <h3>A truly global community</h3>
+        <p>Study alongside peers from 65+ nations and exchange at 250+ partner universities.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROGRAM EXPLORER + FINDER ============ -->
+<section class="section explore" id="explore">
+  <div class="wrap">
+    <div class="explore-head">
+      <div>
+        <span class="eyebrow reveal">Find your path</span>
+        <h2 class="h-sec reveal d1">Don't search by degree.<br>Search by what excites you.</h2>
+      </div>
+      <p class="lead reveal d2" style="margin-bottom:6px">With 300+ programs across nine institutions, the best place to start isn't a course name — it's an interest or a career. Tell us what you're drawn to.</p>
+    </div>
+
+    <div class="find-summary" id="findSummary">
+      <span class="fs-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <div class="fs-tx"><b>Your selection</b> &mdash; explore matching and related programs below.<div class="fs-path"></div></div>
+      <button class="fs-clear" id="fsClear" type="button">Clear</button>
+    </div>
+
+    <!-- Search / Program Finder -->
+    <div class="finder reveal d2">
+      <div class="finder-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3" stroke-linecap="round"/></svg>
+        <input id="progSearch" type="text" placeholder="What would you like to study? Try &ldquo;AI&rdquo;, &ldquo;doctor&rdquo; or &ldquo;design&rdquo;" aria-label="Search programs by name, interest or career" autocomplete="off" />
+        <button class="finder-btn" id="finderBtn">Find programs</button>
+        <div class="suggest" id="suggest"></div>
+      </div>
+      <div class="finder-trending">
+        <span class="tr-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8M21 7v6h-6"/></svg>Trending</span>
+        <button data-q="Computer Science">Computer Science</button>
+        <button data-q="MBBS">MBBS</button>
+        <button data-q="Data Science">Data Science</button>
+        <button data-q="Product Designer">Product Designer</button>
+        <button data-q="MBA">MBA</button>
+        <button data-q="Psychology">Psychology</button>
+      </div>
+    </div>
+
+    <!-- Discovery modes -->
+    <div class="modes reveal d2">
+      <button class="mode active" data-mode="discipline">By discipline</button>
+      <button class="mode" data-mode="interest">By interest</button>
+      <button class="mode" data-mode="career">By career</button>
+    </div>
+    <div class="filters reveal d2" id="filters"></div>
+
+    <div class="prog-grid" id="progGrid">
+      <article class="pcard" data-cat="health" data-interests="medicine biology healthcare science" data-careers="doctor surgeon researcher">
+        <div class="pc-top ph ph1"><span class="pc-tag">Health Sciences</span></div>
+        <div class="pc-body"><h3>Kasturba Medical College</h3><p>India's first private medical college, established 1953. Globally recognised MBBS, MD &amp; MS programs.</p>
+          <div class="pc-foot"><span class="levels">MBBS · MD · MS</span><a href="#" class="link-arrow">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        </div>
+      </article>
+      <article class="pcard" data-cat="engineering" data-interests="ai ml computer software coding robotics electronics data technology" data-careers="engineer data-scientist developer">
+        <div class="pc-top ph ph3"><span class="pc-tag">Engineering</span></div>
+        <div class="pc-body"><h3>Manipal Institute of Technology</h3><p>Since 1957. B.Tech and M.Tech in CSE, AI &amp; ML, Mechanical, Electronics and more.</p>
+          <div class="pc-foot"><span class="levels">B.Tech · M.Tech · Ph.D</span><a href="#" class="link-arrow">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        </div>
+      </article>
+      <article class="pcard" data-cat="management" data-interests="business finance marketing management economics" data-careers="entrepreneur manager analyst consultant">
+        <div class="pc-top ph ph4"><span class="pc-tag">Management</span></div>
+        <div class="pc-body"><h3>T. A. Pai Management Institute</h3><p>One of India's top B-schools. MBA, BBA and executive programs with global immersion.</p>
+          <div class="pc-foot"><span class="levels">MBA · BBA</span><a href="#" class="link-arrow">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        </div>
+      </article>
+      <article class="pcard" data-cat="design" data-interests="design architecture art creativity" data-careers="designer architect">
+        <div class="pc-top ph ph6"><span class="pc-tag">Architecture</span></div>
+        <div class="pc-body"><h3>School of Architecture &amp; Planning</h3><p>Studio-led B.Arch and design programs shaping the built environment of tomorrow.</p>
+          <div class="pc-foot"><span class="levels">B.Arch · M.Arch</span><a href="#" class="link-arrow">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        </div>
+      </article>
+      <article class="pcard" data-cat="health" data-interests="pharmacy chemistry biology medicine science" data-careers="pharmacist researcher">
+        <div class="pc-top ph ph2"><span class="pc-tag">Health Sciences</span></div>
+        <div class="pc-body"><h3>College of Pharmaceutical Sciences</h3><p>NIRF top-ranked pharmacy school. B.Pharm, Pharm.D and research-intensive M.Pharm.</p>
+          <div class="pc-foot"><span class="levels">B.Pharm · Pharm.D</span><a href="#" class="link-arrow">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        </div>
+      </article>
+      <article class="pcard" data-cat="management" data-interests="hospitality food management business" data-careers="hotelier chef manager">
+        <div class="pc-top ph ph4"><span class="pc-tag">Hospitality</span></div>
+        <div class="pc-body"><h3>WGSHA Hotel Administration</h3><p>Asia's leading hotel school. Hands-on BHM with placements across global hospitality brands.</p>
+          <div class="pc-foot"><span class="levels">BHM · MHM</span><a href="#" class="link-arrow">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        </div>
+      </article>
+      <article class="pcard" data-cat="sciences" data-interests="biology genetics biotech data science" data-careers="scientist researcher">
+        <div class="pc-top ph ph5"><span class="pc-tag">Sciences</span></div>
+        <div class="pc-body"><h3>School of Life Sciences</h3><p>Biotechnology, genetics and bioinformatics with cutting-edge research labs and faculty.</p>
+          <div class="pc-foot"><span class="levels">B.Sc · M.Sc · Ph.D</span><a href="#" class="link-arrow">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        </div>
+      </article>
+      <article class="pcard" data-cat="sciences engineering" data-interests="data ai analytics computer technology" data-careers="data-scientist analyst engineer">
+        <div class="pc-top ph ph3"><span class="pc-tag">Data &amp; AI</span></div>
+        <div class="pc-body"><h3>School of Information Sciences</h3><p>M.Sc in Data Science, Big Data and intelligent systems built for an AI-first world.</p>
+          <div class="pc-foot"><span class="levels">M.Sc · PG Diploma</span><a href="#" class="link-arrow">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        </div>
+      </article>
+      <article class="pcard" data-cat="humanities" data-interests="psychology media law writing communication" data-careers="lawyer journalist psychologist">
+        <div class="pc-top ph ph6"><span class="pc-tag">Humanities &amp; Law</span></div>
+        <div class="pc-body"><h3>Humanities, Law &amp; Communication</h3><p>BA Honours, LL.B, journalism and psychology — programs for storytellers and changemakers.</p>
+          <div class="pc-foot"><span class="levels">BA · LL.B · MA</span><a href="#" class="link-arrow">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="no-results" id="noResults" hidden>No programs match that yet — try a broader interest like &ldquo;design&rdquo;, &ldquo;biology&rdquo; or &ldquo;business&rdquo;.</div>
+
+    <div style="text-align:center;margin-top:40px" class="reveal">
+      <a href="#" class="btn btn-ghost">View all 300+ programs
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OUTCOMES ============ -->
+<section class="section outcomes" id="outcomes">
+  <div class="wrap">
+    <div class="out-grid">
+      <div>
+        <span class="eyebrow reveal">Outcomes that compound</span>
+        <h2 class="h-sec reveal d1">A degree that opens doors worldwide</h2>
+        <p class="lead reveal d2" style="margin-top:14px">Manipal alumni are decision-makers, founders and change-makers across 60+ countries. Strong placements, deep recruiter relationships and a network that stays with you for life.</p>
+        <div class="out-stats reveal d2">
+          <div class="ostat"><b>900+</b><span>Recruiters every year</span></div>
+          <div class="ostat"><b>200+</b><span>Internship partners</span></div>
+          <div class="ostat"><b>60+</b><span>Countries with alumni</span></div>
+          <div class="ostat"><b>2.5L+</b><span>Global alumni network</span></div>
+        </div>
+        <div class="recruiters reveal d3">
+          <span class="rtag">Microsoft</span><span class="rtag">Deloitte</span><span class="rtag">Amazon</span>
+          <span class="rtag">Apollo</span><span class="rtag">Goldman Sachs</span><span class="rtag">Tata</span><span class="rtag">+ many more</span>
+        </div>
+      </div>
+      <div class="out-visual ph ph3 reveal d1" data-label="Alumni story — swap for MAHE photo">
+        <div class="ph-grain"></div>
+        <div class="quote-card">
+          <p>“Manipal didn't just teach me medicine — it gave me a global network and the confidence to lead.”</p>
+          <div class="qa"><span class="av"></span><div><b>Dr. Ananya Rao</b><span>KMC '18 · now at NHS, London</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CAMPUS LIFE GALLERY ============ -->
+<section class="section life" id="life">
+  <div class="wrap">
+    <div class="life-head">
+      <span class="eyebrow reveal">Campus life</span>
+      <h2 class="h-sec reveal d1">Where your best years actually happen</h2>
+      <p class="lead reveal d2" style="margin-top:14px">Fests and clubs, labs and libraries, courts and coastlines. Life at Manipal is as much about who you become outside the classroom as inside it.</p>
+    </div>
+    <div class="gallery">
+      <div class="gtile g-wide g-tall ph ph1 reveal" data-label="">
+        <div class="gcap"><b>Revels &amp; TechTatva</b><span>India's biggest student-run fests</span></div>
+      </div>
+      <div class="gtile ph ph2 reveal d1" data-label=""><div class="gcap"><b>200+ clubs</b><span>Find your people</span></div></div>
+      <div class="gtile ph ph5 reveal d2" data-label=""><div class="gcap"><b>Coastal living</b><span>Beaches 15 mins away</span></div></div>
+      <div class="gtile g-wide ph ph4 reveal d1" data-label=""><div class="gcap"><b>Sports &amp; MARENA</b><span>Play at the highest level</span></div></div>
+      <div class="gtile ph ph3 reveal d2" data-label=""><div class="gcap"><b>Innovation labs</b><span>Build what's next</span></div></div>
+      <div class="gtile ph ph6 reveal d3" data-label=""><div class="gcap"><b>Hostel life</b><span>A home on the hill</span></div></div>
+    </div>
+    <!-- Virtual tour now lives with campus life, where it belongs -->
+    <div class="tour-cta reveal">
+      <span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+      <div class="tc-txt"><b>Can't visit in person? Take the 360° virtual tour</b><span>Walk through hostels, labs, MARENA and the student plaza — from anywhere, in minutes.</span></div>
+      <a href="#" class="btn btn-primary">Start virtual tour</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ADMISSIONS BAND ============ -->
+<section class="admit" id="admissions">
+  <div class="wrap">
+    <div class="admit-inner">
+      <div>
+        <h2>Your application takes<br>just four steps.</h2>
+        <p>Applications for the 2026 intake are now open across all programs. Start today and our admissions team will guide you the rest of the way.</p>
+        <div class="admit-actions">
+          <a href="#" class="btn btn-light">Apply now
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="#" class="btn" style="background:rgba(255,255,255,.18);color:#fff">Download brochure</a>
+        </div>
+      </div>
+      <div class="steps">
+        <div class="stepi reveal"><span class="sn">01</span><div><b>Register &amp; choose program</b><span>Create your account in 2 minutes</span></div></div>
+        <div class="stepi reveal d1"><span class="sn">02</span><div><b>Take the MET entrance test</b><span>Online, slot-based scheduling</span></div></div>
+        <div class="stepi reveal d2"><span class="sn">03</span><div><b>Counselling &amp; seat allotment</b><span>Pick your branch and campus</span></div></div>
+        <div class="stepi reveal d3"><span class="sn">04</span><div><b>Confirm &amp; join</b><span>Welcome to Manipal</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEWS ============ -->
+<section class="section news">
+  <div class="wrap">
+    <div class="explore-head">
+      <div>
+        <span class="eyebrow reveal">Latest from Manipal</span>
+        <h2 class="h-sec reveal d1">News, events &amp; happenings</h2>
+      </div>
+      <a href="#" class="link-arrow reveal d2" style="margin-bottom:8px">All news <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="news-grid">
+      <article class="ncard reveal">
+        <div class="nc-img ph ph3"><span class="nc-cat">Research</span></div>
+        <div class="nc-body"><div class="nc-date">12 June 2026</div><h3>MAHE to host Global Health Summit 2026 alongside World Health Summit</h3></div>
+      </article>
+      <article class="ncard reveal d1">
+        <div class="nc-img ph ph4"><span class="nc-cat">Campus</span></div>
+        <div class="nc-body"><div class="nc-date">28 May 2026</div><h3>International Rover Challenge returns to MIT Manipal this season</h3></div>
+      </article>
+      <article class="ncard reveal d2">
+        <div class="nc-img ph ph2"><span class="nc-cat">Rankings</span></div>
+        <div class="nc-body"><div class="nc-date">15 May 2026</div><h3>Manipal climbs in QS Asia rankings, reaffirming research strength</h3></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AUDIENCE QUICK ACCESS ============ -->
+<section class="section aud">
+  <div class="wrap">
+    <span class="eyebrow reveal">Quick access</span>
+    <h2 class="h-sec reveal d1">However you're connected to Manipal</h2>
+    <div class="aud-grid">
+      <div class="acard reveal">
+        <div class="ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 14l9-5-9-5-9 5 9 5Z"/><path d="M12 14v7M5 11v4c0 1 3 3 7 3s7-2 7-3v-4"/></svg></div>
+        <h3>Current Students</h3>
+        <ul>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>Student portal &amp; LMS</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>Exams &amp; results</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>Library &amp; resources</a></li>
+        </ul>
+      </div>
+      <div class="acard reveal d1">
+        <div class="ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h.01M9 13h.01M15 9h.01M15 13h.01M10 21v-4h4v4"/></svg></div>
+        <h3>Parents &amp; Guardians</h3>
+        <ul>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>Fee structure &amp; payment</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>Hostel &amp; safety</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>Scholarships</a></li>
+        </ul>
+      </div>
+      <div class="acard reveal d2">
+        <div class="ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></div>
+        <h3>Alumni &amp; Donors</h3>
+        <ul>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>Join the network</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>Give back</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>Events &amp; reunions</a></li>
+        </ul>
+      </div>
+      <div class="acard reveal d3">
+        <div class="ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7h-9M14 17H5M17 17a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM7 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/></svg></div>
+        <h3>Faculty &amp; Staff</h3>
+        <ul>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>Staff portal</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>Research &amp; grants</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>Careers at Manipal</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="#" class="brand">
+          <span class="mark"><svg viewBox="0 0 24 24"><path d="M12 2C12 2 7 7 7 13a5 5 0 0 0 10 0c0-2-1-3.5-2.5-5C13 11 14 13 12 14c-1.5-1-1-3 0-5 0 0 0-4 0-7Z" fill="#fff"/></svg></span>
+          <span class="wordmark"><b>MANIPAL</b><span style="color:rgba(255,255,255,.5)">Academy of Higher Education</span></span>
+        </a>
+        <p>Inspired by Life. A globally engaged Institution of Eminence, nurturing changemakers since 1953.</p>
+        <div class="foot-social">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6ZM2 9h4v12H2zM4 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 8.5a3 3 0 0 0-2-2C18 6 12 6 12 6s-6 0-8 .5a3 3 0 0 0-2 2C2 10 2 12 2 12s0 2 .5 3.5a3 3 0 0 0 2 2C6 18 12 18 12 18s6 0 8-.5a3 3 0 0 0 2-2C22 14 22 12 22 12s0-2-.5-3.5Z"/><path d="M10 9l5 3-5 3z" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h3l-7 8 8 12h-6l-5-7-5 7H3l8-9L3 2h6l4 6 5-6Z"/></svg></a>
+        </div>
+      </div>
+      <div class="fcol">
+        <h4>Study</h4>
+        <a href="#">Undergraduate</a><a href="#">Postgraduate</a><a href="#">Doctoral (Ph.D)</a><a href="#">Online Manipal</a><a href="#">International</a>
+      </div>
+      <div class="fcol">
+        <h4>About</h4>
+        <a href="#">Our story</a><a href="#">Rankings</a><a href="#">Campuses</a><a href="#">Research</a><a href="#">Leadership</a>
+      </div>
+      <div class="fcol">
+        <h4>Connect</h4>
+        <a href="#">Admissions help</a><a href="#">Visit campus</a><a href="#">Contact us</a><a href="#">Careers</a><a href="#">Newsroom</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Manipal Academy of Higher Education. Concept redesign.</span>
+      <div class="fb-links"><a href="#">Privacy</a><a href="#">Cookies</a><a href="#">Accessibility</a><a href="#">Sitemap</a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- Mobile program-finder sheet -->
+<div class="sheet-scrim" id="sheetScrim"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Find your program">
+  <div class="sheet-grab"></div>
+  <div class="sheet-top"><b>Find your program</b><button class="sheet-close" id="sheetClose" type="button" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="sheet-prog">
+    <span class="pdot on" id="pd1"></span><span class="pdot" id="pd2"></span><span class="pdot" id="pd3"></span>
+    <span class="pstep" id="pStep">Step 1 of 3</span>
+  </div>
+  <div class="sheet-q" id="sheetQ">Choose your campus</div>
+  <div class="sheet-list" id="sheetList"></div>
+  <div class="sheet-foot">
+    <button class="sheet-back" id="sheetBack" type="button" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg>Back</button>
+    <button class="sheet-cta" id="sheetCta" type="button" disabled>View programs</button>
+  </div>
+</div>
+
+<script>
+  // ----- Header scroll state -----
+  var header = document.getElementById('header');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 12){ header.classList.add('scrolled'); }
+    else{ header.classList.remove('scrolled'); }
+  }, {passive:true});
+
+  // ----- Mobile menu -----
+  var mmenu = document.getElementById('mmenu');
+  document.getElementById('menuOpen').addEventListener('click', function(){ mmenu.classList.add('open'); document.body.style.overflow='hidden'; });
+  function closeMenu(){ mmenu.classList.remove('open'); document.body.style.overflow=''; }
+  document.getElementById('menuClose').addEventListener('click', closeMenu);
+  mmenu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
+
+  // =====================================================
+  //  PROGRAM FINDER  (search + interest/career discovery)
+  // =====================================================
+  var grid = document.getElementById('progGrid');
+  var cards = Array.prototype.slice.call(grid.querySelectorAll('.pcard'));
+  var filtersEl = document.getElementById('filters');
+  var progSearch = document.getElementById('progSearch');
+  var suggestEl = document.getElementById('suggest');
+  var noResults = document.getElementById('noResults');
+
+  // chip sets for each discovery mode
+  var MODES = {
+    discipline: [['All disciplines','all'],['Health Sciences','health'],['Engineering & Tech','engineering'],['Management','management'],['Design & Architecture','design'],['Sciences','sciences'],['Humanities & Law','humanities']],
+    interest:   [['All','all'],['AI & ML','ai'],['Design','design'],['Psychology','psychology'],['Business','business'],['Biology & Medicine','biology'],['Data & Analytics','data'],['Media','media'],['Law','law'],['Hospitality','hospitality']],
+    career:     [['All','all'],['Doctor','doctor'],['Engineer','engineer'],['Product Designer','designer'],['Entrepreneur','entrepreneur'],['Data Scientist','data-scientist'],['Lawyer','lawyer'],['Hotelier','hotelier'],['Researcher','researcher']]
+  };
+  var currentMode = 'discipline';
+
+  function tokens(v){ return (v||'').split(' ').filter(Boolean); }
+
+  function showCount(n){ noResults.hidden = (n !== 0); }
+
+  function renderChips(mode){
+    filtersEl.innerHTML = '';
+    MODES[mode].forEach(function(pair, i){
+      var b = document.createElement('button');
+      b.className = 'filter' + (i === 0 ? ' active' : '');
+      b.textContent = pair[0];
+      b.setAttribute('data-val', pair[1]);
+      b.addEventListener('click', function(){
+        filtersEl.querySelectorAll('.filter').forEach(function(x){ x.classList.remove('active'); });
+        b.classList.add('active');
+        if(progSearch) progSearch.value = '';
+        filterByChip(mode, pair[1]);
+      });
+      filtersEl.appendChild(b);
+    });
+  }
+
+  function filterByChip(mode, val){
+    var n = 0;
+    cards.forEach(function(card){
+      var show;
+      if(val === 'all'){ show = true; }
+      else if(mode === 'discipline'){ show = tokens(card.dataset.cat).indexOf(val) !== -1; }
+      else if(mode === 'interest'){ show = tokens(card.dataset.interests).indexOf(val) !== -1; }
+      else { show = tokens(card.dataset.careers).indexOf(val) !== -1; }
+      card.classList.toggle('hide', !show);
+      if(show) n++;
+    });
+    showCount(n);
+  }
+
+  function haystack(card){
+    return (card.dataset.cat + ' ' + card.dataset.interests + ' ' + card.dataset.careers + ' ' +
+            card.querySelector('h3').textContent + ' ' + card.querySelector('.pc-tag').textContent + ' ' +
+            card.querySelector('.levels').textContent).toLowerCase();
+  }
+
+  function runSearch(q){
+    q = (q || '').trim().toLowerCase();
+    if(progSearch) progSearch.value = q;
+    filtersEl.querySelectorAll('.filter').forEach(function(x){ x.classList.remove('active'); });
+    closeSuggest();
+    if(!q){ cards.forEach(function(c){ c.classList.remove('hide'); }); showCount(cards.length); return; }
+    var words = q.split(/\s+/).filter(Boolean);
+    var n = 0;
+    cards.forEach(function(card){
+      var hay = haystack(card);
+      var show = hay.indexOf(q) !== -1 || words.every(function(w){ return hay.indexOf(w) !== -1; });
+      card.classList.toggle('hide', !show);
+      if(show) n++;
+    });
+    showCount(n);
+  }
+
+  // ---- autocomplete ----
+  var SUGGEST = [];
+  cards.forEach(function(card){
+    SUGGEST.push({ label: card.querySelector('h3').textContent, val: card.querySelector('h3').textContent, type: 'Program' });
+  });
+  [['Artificial Intelligence'],['Computer Science'],['Design'],['Psychology'],['Business'],['Medicine'],['Data Science'],['Architecture'],['Law'],['Hospitality'],['Biotechnology']].forEach(function(p){
+    SUGGEST.push({ label: p[0], val: p[0], type: 'Interest' });
+  });
+  [['Doctor'],['Engineer'],['Product Designer'],['Entrepreneur'],['Data Scientist'],['Lawyer'],['Hotelier'],['Researcher']].forEach(function(p){
+    SUGGEST.push({ label: p[0], val: p[0], type: 'Career' });
+  });
+
+  function iconFor(type){
+    if(type === 'Program') return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5A2.5 2.5 0 0 0 6.5 22H20V2H6.5A2.5 2.5 0 0 0 4 4.5v15Z"/></svg>';
+    if(type === 'Career') return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>';
+    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3" stroke-linecap="round"/></svg>';
+  }
+
+  function renderSuggest(q){
+    q = q.trim().toLowerCase();
+    if(!q){ closeSuggest(); return; }
+    var matches = SUGGEST.filter(function(s){ return s.label.toLowerCase().indexOf(q) !== -1; }).slice(0, 6);
+    if(!matches.length){ closeSuggest(); return; }
+    suggestEl.innerHTML = matches.map(function(s){
+      return '<button data-val="' + s.val.replace(/"/g,'&quot;') + '"><span class="sg-ico">' + iconFor(s.type) + '</span><span class="sg-label">' + s.label + '</span><span class="sg-type">' + s.type + '</span></button>';
+    }).join('');
+    suggestEl.querySelectorAll('button').forEach(function(btn){
+      btn.addEventListener('click', function(){ runSearch(btn.getAttribute('data-val')); });
+    });
+    suggestEl.classList.add('open');
+  }
+  function closeSuggest(){ suggestEl.classList.remove('open'); }
+
+  if(progSearch){
+    progSearch.addEventListener('input', function(){ renderSuggest(progSearch.value); });
+    progSearch.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); runSearch(progSearch.value); } });
+    document.addEventListener('click', function(e){ if(!e.target.closest('.finder-search')) closeSuggest(); });
+  }
+  var finderBtn = document.getElementById('finderBtn');
+  if(finderBtn) finderBtn.addEventListener('click', function(){ runSearch(progSearch.value); });
+
+  // mode tabs
+  document.querySelectorAll('.mode').forEach(function(m){
+    m.addEventListener('click', function(){
+      document.querySelectorAll('.mode').forEach(function(x){ x.classList.remove('active'); });
+      m.classList.add('active');
+      currentMode = m.getAttribute('data-mode');
+      if(progSearch) progSearch.value = '';
+      renderChips(currentMode);
+      filterByChip(currentMode, 'all');
+    });
+  });
+
+  // trending chips
+  document.querySelectorAll('.finder-trending [data-q]').forEach(function(t){
+    t.addEventListener('click', function(){ runSearch(t.getAttribute('data-q')); });
+  });
+
+  // =====================================================
+  //  HERO CASCADE FINDER  (campus -> institution -> program)
+  // =====================================================
+  var CASCADE = {
+    "Manipal (Udupi)": {
+      "Institute of Technology (MIT)": ["B.Tech Computer Science","B.Tech AI & ML","B.Tech Mechanical","M.Tech"],
+      "Kasturba Medical College": ["MBBS","MD","MS"],
+      "T. A. Pai Management Institute": ["MBA","BBA"],
+      "College of Pharmaceutical Sciences": ["B.Pharm","Pharm.D"],
+      "WGSHA \u2014 Hotel Administration": ["BHM","MHM"],
+      "School of Architecture & Planning": ["B.Arch","M.Arch"]
+    },
+    "Bangalore": {
+      "Institute of Technology, Bengaluru": ["B.Tech Computer Science","B.Tech Electronics"],
+      "School of Design": ["B.Des","M.Des"],
+      "School of Business": ["BBA","MBA"]
+    },
+    "Jaipur": {
+      "School of Computing & IT": ["B.Tech Computer Science","B.Tech Data Science"],
+      "School of Design": ["B.Des"],
+      "School of Business": ["BBA","MBA"],
+      "School of Law": ["BA LL.B"]
+    },
+    "Dubai": {
+      "Engineering & IT": ["B.Tech Computer Science"],
+      "School of Business": ["BBA","MBA"],
+      "Media & Communication": ["BA Media & Communication"]
+    }
+  };
+
+  var IC_PIN = '<svg class="ho-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>';
+  var IC_BLD = '<svg class="ho-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v16M15 21V9h3a1 1 0 0 1 1 1v11"/></svg>';
+  var IC_CAP = '<svg class="ho-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5v-5"/></svg>';
+  var CK = '<svg class="ho-ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+
+  var segLoc = document.getElementById('segLoc');
+  var segInst = document.getElementById('segInst');
+  var segProg = document.getElementById('segProg');
+  var panelLoc = document.getElementById('panelLoc');
+  var panelInst = document.getElementById('panelInst');
+  var panelProg = document.getElementById('panelProg');
+  var hFind = document.getElementById('hFind');
+  var dState = { loc:null, inst:null, prog:null };
+
+  function segVal(seg){ return seg.querySelector('.hval'); }
+  function setDisabled(seg, on, placeholder){
+    seg.setAttribute('aria-disabled', on ? 'true' : 'false');
+    if(on && placeholder){ segVal(seg).textContent = placeholder; }
+  }
+  function closePanels(){
+    [segLoc,segInst,segProg].forEach(function(s){ s.classList.remove('open'); s.querySelector('.hseg-btn').setAttribute('aria-expanded','false'); });
+  }
+  function openSeg(seg){ closePanels(); seg.classList.add('open'); seg.querySelector('.hseg-btn').setAttribute('aria-expanded','true'); }
+  function togglePanel(seg){
+    var isOpen = seg.classList.contains('open');
+    closePanels();
+    if(!isOpen && seg.getAttribute('aria-disabled') !== 'true'){ openSeg(seg); }
+  }
+  function optionBtn(icon, label, selected, onClick){
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'hopt' + (selected ? ' sel' : '');
+    b.innerHTML = icon + '<span>' + label + '</span>' + (selected ? CK : '');
+    b.addEventListener('click', onClick);
+    return b;
+  }
+  function buildLoc(){
+    panelLoc.innerHTML = '<div class="hp-head">Choose a campus</div>';
+    Object.keys(CASCADE).forEach(function(loc){
+      panelLoc.appendChild(optionBtn(IC_PIN, loc, dState.loc === loc, function(){ pickLoc(loc); }));
+    });
+  }
+  function buildInst(){
+    panelInst.innerHTML = '<div class="hp-head">Institutions in ' + dState.loc + '</div>';
+    Object.keys(CASCADE[dState.loc]).forEach(function(inst){
+      panelInst.appendChild(optionBtn(IC_BLD, inst, dState.inst === inst, function(){ pickInst(inst); }));
+    });
+  }
+  function buildProg(){
+    panelProg.innerHTML = '<div class="hp-head">Programs at ' + dState.inst + '</div>';
+    CASCADE[dState.loc][dState.inst].forEach(function(prog){
+      panelProg.appendChild(optionBtn(IC_CAP, prog, dState.prog === prog, function(){ pickProg(prog); }));
+    });
+  }
+  function pickLoc(loc){
+    dState.loc = loc; dState.inst = null; dState.prog = null;
+    segVal(segLoc).textContent = loc;
+    setDisabled(segInst, false); segVal(segInst).textContent = 'Select institution';
+    setDisabled(segProg, true, 'Select an institution');
+    buildInst(); hFind.disabled = false; openSeg(segInst);
+  }
+  function pickInst(inst){
+    dState.inst = inst; dState.prog = null;
+    segVal(segInst).textContent = inst;
+    setDisabled(segProg, false); segVal(segProg).textContent = 'Select program';
+    buildProg(); openSeg(segProg);
+  }
+  function pickProg(prog){ dState.prog = prog; segVal(segProg).textContent = prog; closePanels(); }
+
+  [segLoc,segInst,segProg].forEach(function(seg){
+    seg.querySelector('.hseg-btn').addEventListener('click', function(e){ e.stopPropagation(); togglePanel(seg); });
+  });
+  document.addEventListener('click', function(e){ if(!e.target.closest('.hbar')) closePanels(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closePanels(); });
+  hFind.addEventListener('click', function(){ if(dState.loc){ showSummary(dState.loc, dState.inst, dState.prog); goExplore(); } });
+  buildLoc();
+
+  // shared: summary chip + scroll
+  var findSummary = document.getElementById('findSummary');
+  function showSummary(loc, inst, prog){
+    var path = findSummary.querySelector('.fs-path');
+    path.innerHTML = '';
+    [loc, inst, prog].forEach(function(v){ if(v){ var s = document.createElement('span'); s.textContent = v; path.appendChild(s); } });
+    findSummary.classList.add('show');
+  }
+  document.getElementById('fsClear').addEventListener('click', function(){ findSummary.classList.remove('show'); });
+  function goExplore(){ var t = document.getElementById('explore'); if(t) t.scrollIntoView({ behavior:'smooth' }); }
+
+  // =====================================================
+  //  MOBILE STEPPED SHEET
+  // =====================================================
+  var sheet = document.getElementById('sheet');
+  var scrim = document.getElementById('sheetScrim');
+  var sheetList = document.getElementById('sheetList');
+  var sheetQ = document.getElementById('sheetQ');
+  var sheetBack = document.getElementById('sheetBack');
+  var sheetCta = document.getElementById('sheetCta');
+  var pStep = document.getElementById('pStep');
+  var pds = [document.getElementById('pd1'), document.getElementById('pd2'), document.getElementById('pd3')];
+  var mState = { step:1, loc:null, inst:null, prog:null };
+  var SR_GO = '<svg class="sr-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>';
+  var SR_CK = '<svg class="sr-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="color:var(--orange-deep)"><path d="M20 6 9 17l-5-5"/></svg>';
+
+  function sheetRow(icon, title, sub, selected, onClick){
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'srow' + (selected ? ' sel' : '');
+    b.innerHTML = '<span class="sr-ic">' + icon + '</span><span class="sr-tx">' + title + (sub ? '<small>' + sub + '</small>' : '') + '</span>' + (selected ? SR_CK : SR_GO);
+    b.addEventListener('click', onClick);
+    return b;
+  }
+  function renderStep(){
+    pds.forEach(function(d, i){ d.classList.toggle('on', i < mState.step); });
+    pStep.textContent = 'Step ' + mState.step + ' of 3';
+    sheetBack.style.display = mState.step > 1 ? 'flex' : 'none';
+    sheetList.innerHTML = '';
+    var ICm = mState.step === 1 ? IC_PIN : mState.step === 2 ? IC_BLD : IC_CAP;
+    if(mState.step === 1){
+      sheetQ.textContent = 'Choose your campus'; sheetCta.disabled = true;
+      Object.keys(CASCADE).forEach(function(loc){
+        var n = Object.keys(CASCADE[loc]).length;
+        sheetList.appendChild(sheetRow(ICm, loc, n + (n === 1 ? ' institution' : ' institutions'), mState.loc === loc, function(){ mState.loc = loc; mState.inst = null; mState.prog = null; mState.step = 2; renderStep(); }));
+      });
+    } else if(mState.step === 2){
+      sheetQ.textContent = 'Choose an institution'; sheetCta.disabled = true;
+      Object.keys(CASCADE[mState.loc]).forEach(function(inst){
+        var n = CASCADE[mState.loc][inst].length;
+        sheetList.appendChild(sheetRow(ICm, inst, n + ' programs', mState.inst === inst, function(){ mState.inst = inst; mState.prog = null; mState.step = 3; renderStep(); }));
+      });
+    } else {
+      sheetQ.textContent = 'Choose a program';
+      CASCADE[mState.loc][mState.inst].forEach(function(prog){
+        sheetList.appendChild(sheetRow(ICm, prog, '', mState.prog === prog, function(){ mState.prog = prog; renderStep(); }));
+      });
+      sheetCta.disabled = !mState.prog;
+    }
+  }
+  function openSheet(){ mState = { step:1, loc:null, inst:null, prog:null }; renderStep(); scrim.classList.add('open'); sheet.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeSheet(){ scrim.classList.remove('open'); sheet.classList.remove('open'); document.body.style.overflow = ''; }
+  var mTrigger = document.getElementById('mTrigger');
+  if(mTrigger) mTrigger.addEventListener('click', openSheet);
+  document.getElementById('sheetClose').addEventListener('click', closeSheet);
+  scrim.addEventListener('click', closeSheet);
+  sheetBack.addEventListener('click', function(){ if(mState.step > 1){ mState.step--; renderStep(); } });
+  sheetCta.addEventListener('click', function(){ if(mState.prog){ showSummary(mState.loc, mState.inst, mState.prog); closeSheet(); goExplore(); } });
+
+  // init
+  renderChips('discipline');
+
+  // ----- Reduced motion check -----
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ----- Reveal on scroll -----
+  if(!reduce && 'IntersectionObserver' in window){
+    var ro = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('visible'); ro.unobserve(e.target); }
+      });
+    }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){ ro.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('visible'); });
+  }
+
+  // ----- Animated counters -----
+  function animateCount(el){
+    var target = parseInt(el.getAttribute('data-count'), 10);
+    if(reduce){ el.textContent = target; return; }
+    var dur = 1500, t0 = null;
+    function step(ts){
+      if(!t0) t0 = ts;
+      var p = Math.min((ts - t0)/dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(eased * target);
+      if(p < 1){ requestAnimationFrame(step); }
+    }
+    requestAnimationFrame(step);
+  }
+  if('IntersectionObserver' in window){
+    var co = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ animateCount(e.target); co.unobserve(e.target); }
+      });
+    }, {threshold:0.5});
+    document.querySelectorAll('[data-count]').forEach(function(el){ co.observe(el); });
+  } else {
+    document.querySelectorAll('[data-count]').forEach(function(el){ el.textContent = el.getAttribute('data-count'); });
+  }
+</script>
+</body>
+</html>
